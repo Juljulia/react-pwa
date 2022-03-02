@@ -3,8 +3,15 @@ body {
   font-family: 'Roboto', 'Segoe UI', 'Oxygen', sans-serif;
   box-sizing: border-box;
   background-color: #ffffff;
-  color: #2d1a1a;
+  color: black;
   padding: 0 24;
+}
+
+:root {
+  --pepper: #992526;
+  --lightText: #f1fcff;
+  --secondary: #cae0e3;
+  --darkText: #0a0a4a;
 }
 
 h1 {
@@ -16,7 +23,7 @@ h2 {
 }
 
 h3 {
-  font-size: 44px;
+  font-size: 32px;
 }
 
 p {

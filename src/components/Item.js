@@ -2,27 +2,40 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 0;
+  position: relative;
+  border: 1px solid #c5c5c5;
+  padding: 8px;
+
   img {
     object-fit: cover;
-    width: 160px;
+    width: 100px;
   }
+
   p {
     text-align: center;
-    font-size: 12px;
+    font-weight: 600;
+    padding: 0 8px;
+  }
+
+  .price {
+    position: absolute;
+    padding: 4px;
+    background-color: var(--secondary);
+    font-weight: bold;
+    left: 8px;
+    border-radius: 4px;
   }
 `;
 
-export const Item = (props) => {
+export const Item = ({ data }) => {
   return (
     <Container>
-      <img src={props.data.imageUrl} alt='TODO' />
-      <p>{props.data.formattedName}</p>
-      <span>{props.data.price.toFixed(2)}</span>
+      <img src={data.imageUrl} alt='TODO' />
+      <p>{data.formattedName}</p>
+      <span className='price'>{data.price.toFixed(2)}</span>
     </Container>
   );
 };
