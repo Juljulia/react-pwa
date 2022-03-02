@@ -19,6 +19,7 @@ export const CategoryPills = ({ categories }) => {
     <>
       {categories.map((category) => (
         <Pill
+          key={category.id}
           to={`/category/${category.id}`}
           state={{
             subCategories: category.subCategories,

@@ -46,6 +46,7 @@ export function Category() {
     };
 
     fetchSubCategories();
+    // TODO fix cleanup
   }, [id]);
 
   const filteredItems = React.useMemo(() => {
@@ -66,7 +67,7 @@ export function Category() {
         )}
       </div>
       <form style={{ padding: '16px 0' }}>
-        <label for='search' style={{ padding: ' 0 4px 8px 0 ' }}>
+        <label htmlFor='search' style={{ padding: ' 0 4px 8px 0 ' }}>
           Sök vara
         </label>
         <StyledInput
