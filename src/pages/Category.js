@@ -45,20 +45,19 @@ export function Category() {
   const location = useLocation();
   const navigate = useNavigate();
   const { id } = useParams();
-  const [items, setItems] = React.useState([]);
+  const [items, setItems] = React.useState(null);
   const [input, setInput] = React.useState('');
   const { subCategories, title } = location.state;
 
   React.useEffect(() => {
     const apiUrl = 'https://matse.futurememories.se';
-    const fetchSubCategories = async () => {
+    const fetchItems = async () => {
       const data = await fetch(`${apiUrl}/listByCategory?categoryId=${id}`);
       const json = await data.json();
       setItems(json);
     };
 
-    fetchSubCategories();
-    // TODO fix cleanup
+    fetchItems();
   }, [id]);
 
   const filteredItems = React.useMemo(() => {
@@ -98,11 +97,13 @@ export function Category() {
         ></StyledInput>
       </form>
 
-      <Grid>
-        {filteredItems.map((data) => (
-          <Item key={data.id} data={data} />
-        ))}
-      </Grid>
+      {filteredItems && (
+        <Grid>
+          {filteredItems.map((data) => (
+            <Item key={data.id} data={data} />
+          ))}
+        </Grid>
+      )}
     </Container>
   );
 }

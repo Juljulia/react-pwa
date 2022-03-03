@@ -41,14 +41,15 @@ export const Home = () => {
     const storedCategories = JSON.parse(
       window.localStorage.getItem('subCategories')
     );
-    setCategories(storedCategories);
-  }, []);
-
-  React.useEffect(() => {
-    if (!categories) {
+    if (!storedCategories) {
       fetchCategories();
     }
-  }, [categories]);
+    setCategories(storedCategories);
+
+    return () => {
+      setCategories(null);
+    };
+  }, []);
 
   return (
     <Container>
@@ -56,10 +57,10 @@ export const Home = () => {
       {loading && <p>Hämtar kategorier...</p>}
       {error && <p>{error}</p>}
       {categories && (
-        <>
+        <div>
           <p>Välj en kategori</p>
           <CategoryList categories={categories} />
-        </>
+        </div>
       )}
     </Container>
   );
