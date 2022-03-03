@@ -26,9 +26,9 @@ const CategoryLink = styled(Link)`
   color: var(--darkText);
 `;
 
-export const CategoryList = ({ categories, wrapperHeight = '300px' }) => {
+export const CategoryList = ({ categories }) => {
   return (
-    <StyledWrapper wrapperHeight={wrapperHeight}>
+    <StyledWrapper>
       {categories.map((category) => (
         <StyledListItem key={category.id}>
           <CategoryLink

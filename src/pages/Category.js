@@ -31,7 +31,6 @@ const StyledInput = styled.input`
 `;
 
 const StyledButton = styled.button`
-  /* width: 100px; */
   height: 42px;
   background-color: transparent;
   border: none;
@@ -48,9 +47,9 @@ export function Category() {
   const [items, setItems] = React.useState(null);
   const [input, setInput] = React.useState('');
   const { subCategories, title } = location.state;
+  const apiUrl = 'https://matse.futurememories.se';
 
   React.useEffect(() => {
-    const apiUrl = 'https://matse.futurememories.se';
     const fetchItems = async () => {
       const data = await fetch(`${apiUrl}/listByCategory?categoryId=${id}`);
       const json = await data.json();
