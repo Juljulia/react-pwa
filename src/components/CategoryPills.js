@@ -9,7 +9,7 @@ const Pill = styled(Link)`
   padding: 8px 16px;
   text-align: center;
   text-decoration: none;
-  margin: 4px 8px;
+  margin: 4px;
   cursor: pointer;
   border-radius: 10px;
 `;
