@@ -26,29 +26,17 @@ export const Home = () => {
     setLoading(true);
     const data = await fetch(`${apiUrl}/getCategoryTree`);
     if (data.status !== 200)
-      return setError('Tyvärr, kunde inte hämta kategorier.');
+      return setError(
+        'Hittade inga kategorier tyvärr, ladda om sidan och försök igen.'
+      );
 
     const json = await data.json();
     setCategories(json.subCategories);
     setLoading(false);
-    window.localStorage.setItem(
-      'subCategories',
-      JSON.stringify(json.subCategories)
-    );
   };
 
   React.useEffect(() => {
-    const storedCategories = JSON.parse(
-      window.localStorage.getItem('subCategories')
-    );
-    if (!storedCategories) {
-      fetchCategories();
-    }
-    setCategories(storedCategories);
-
-    return () => {
-      setCategories(null);
-    };
+    fetchCategories();
   }, []);
 
   return (
