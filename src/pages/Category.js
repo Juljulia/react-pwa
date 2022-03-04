@@ -3,6 +3,7 @@ import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { CategoryPills } from '../components/CategoryPills';
 import { Item } from '../components/Item';
+import { LottieLoading } from '../components/Icons/LottieLoading';
 
 const Container = styled.div`
   display: flex;
@@ -46,14 +47,17 @@ export function Category() {
   const { id } = useParams();
   const [items, setItems] = React.useState(null);
   const [input, setInput] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
   const { subCategories, title } = location.state;
   const apiUrl = 'https://matse.futurememories.se';
 
   React.useEffect(() => {
     const fetchItems = async () => {
+      setLoading(true);
       const data = await fetch(`${apiUrl}/listByCategory?categoryId=${id}`);
       const json = await data.json();
       setItems(json);
+      setLoading(false);
     };
 
     fetchItems();
@@ -95,6 +99,8 @@ export function Category() {
           onChange={(e) => setInput(e.target.value)}
         ></StyledInput>
       </form>
+
+      {loading && <LottieLoading />}
 
       {filteredItems && (
         <Grid>

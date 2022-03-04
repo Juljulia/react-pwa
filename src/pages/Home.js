@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CategoryList } from '../components/CategoryList';
+import { LottieLoading } from '../components/Icons/LottieLoading';
 
 const Container = styled.div`
   display: flex;
@@ -42,7 +43,7 @@ export const Home = () => {
   return (
     <Container>
       <p className='title'>Vad är du sugen på?</p>
-      {loading && <p>Hämtar kategorier...</p>}
+      {loading && <LottieLoading />}
       {error && <p>{error}</p>}
       {categories && (
         <div>
