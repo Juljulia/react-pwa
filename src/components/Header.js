@@ -10,6 +10,7 @@ const StyledHeader = styled.nav`
   width: 100%;
   display: flex;
   align-items: center;
+  z-index: 10;
 `;
 
 const StyledLink = styled(Link)`

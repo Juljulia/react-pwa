@@ -17,8 +17,6 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   grid-gap: 8px;
   background: #fff;
-  max-height: 500px;
-  overflow-y: scroll;
   margin-top: 32px;
   padding: 2px;
   max-width: 1000px;
@@ -83,11 +81,7 @@ export function Category() {
         <StyledButton onClick={() => navigate(-1)}>Tillbaka</StyledButton>
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {subCategories.length ? (
-          <CategoryPills categories={subCategories} />
-        ) : (
-          <></>
-        )}
+        {subCategories.length && <CategoryPills categories={subCategories} />}
       </div>
       <form style={{ padding: '16px 0' }}>
         <label htmlFor='search' style={{ padding: ' 0 4px 8px 0 ' }}>
