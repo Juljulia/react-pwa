@@ -81,7 +81,11 @@ export function Category() {
         <StyledButton onClick={() => navigate(-1)}>Tillbaka</StyledButton>
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {subCategories.length && <CategoryPills categories={subCategories} />}
+        {subCategories.length ? (
+          <CategoryPills categories={subCategories} />
+        ) : (
+          <></>
+        )}
       </div>
       <form style={{ padding: '16px 0' }}>
         <label htmlFor='search' style={{ padding: ' 0 4px 8px 0 ' }}>
@@ -96,7 +100,7 @@ export function Category() {
 
       {loading && <LottieLoading />}
 
-      {filteredItems && (
+      {!loading && filteredItems && (
         <Grid>
           {filteredItems.map((data) => (
             <Item key={data.id} data={data} />
